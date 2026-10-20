@@ -66,7 +66,7 @@ code { font-family: var(--mono); font-size: .86em; background: var(--pink-soft);
 .eye { fill: var(--eye); }
 .stem { stroke: var(--green-leaf); }
 .leaf { fill: var(--green-leaf); }
-.bloom path, path.bloom { fill: var(--pink); }
+path.bloom { fill: var(--pink); }
 
 /* ---- hero ---------------------------------------------------------------- */
 .hero {
@@ -107,11 +107,11 @@ h1 {
 .garden svg { display: block; }
 .tulip { width: 46px; height: 78px; transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite; }
 .tulip.t2 { width: 36px; height: 60px; animation-delay: -1.5s; }
-.tulip.t2 .bloom, .tulip.t2 path.bloom { fill: var(--pink-petal); }
+.tulip.t2 path.bloom { fill: var(--pink-petal); }
 .tulip.t3 { animation-delay: -3s; }
-.bloom { width: 38px; height: 38px; margin-bottom: 8px; animation: spin 18s linear infinite; }
-.bloom.b2 { width: 28px; height: 28px; margin-bottom: 40px; animation-direction: reverse; }
-.bloom.b3 { width: 44px; height: 44px; }
+.daisy { width: 38px; height: 38px; margin-bottom: 8px; animation: spin 18s linear infinite; }
+.daisy.d2 { width: 28px; height: 28px; margin-bottom: 40px; animation-direction: reverse; }
+.daisy.d3 { width: 44px; height: 44px; }
 @media (max-width: 760px) {
   .garden { opacity: .45; transform: scale(.75); transform-origin: bottom; }
 }
