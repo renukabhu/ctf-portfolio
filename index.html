@@ -3,48 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Renuka's CTF Challenges</title>
+  <title>Renuka's CTF Garden</title>
   <meta name="description" content="Capture-the-flag challenges I wrote for ACM Cyber at UCLA, playable right in your browser.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M8 4v26' stroke='%2310b981' stroke-width='3'/%3E%3Cpath d='M9 5h16l-4 6 4 6H9z' fill='%2310b981'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%23f472b6'%3E%3Cellipse ry='5.5' rx='3.6' cy='-5.5'/%3E%3Cellipse ry='5.5' rx='3.6' cy='-5.5' transform='rotate(72)'/%3E%3Cellipse ry='5.5' rx='3.6' cy='-5.5' transform='rotate(144)'/%3E%3Cellipse ry='5.5' rx='3.6' cy='-5.5' transform='rotate(216)'/%3E%3Cellipse ry='5.5' rx='3.6' cy='-5.5' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='3.4' fill='%23fcd34d'/%3E%3C/svg%3E">
 </head>
 <body>
+  <!-- flower + leaf shapes reused across the page -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="flower" viewBox="-12 -12 24 24">
+      <g class="petals">
+        <ellipse rx="3.6" ry="5.5" cy="-5.5"/>
+        <ellipse rx="3.6" ry="5.5" cy="-5.5" transform="rotate(72)"/>
+        <ellipse rx="3.6" ry="5.5" cy="-5.5" transform="rotate(144)"/>
+        <ellipse rx="3.6" ry="5.5" cy="-5.5" transform="rotate(216)"/>
+        <ellipse rx="3.6" ry="5.5" cy="-5.5" transform="rotate(288)"/>
+      </g>
+      <circle class="eye" r="3.4"/>
+    </symbol>
+    <symbol id="tulip" viewBox="0 0 24 40">
+      <path class="stem" d="M12 18 V39" fill="none" stroke-width="2" stroke-linecap="round"/>
+      <path class="leaf" d="M12 32 C6 30 3 25 3 21 C8 22 11 26 12 32 Z"/>
+      <path class="leaf" d="M12 28 C17 26 21 22 21 18 C16 19 13 22 12 28 Z"/>
+      <path class="bloom" d="M4 6 L8 10 L12 3 L16 10 L20 6 C21 14 18 19 12 19 C6 19 3 14 4 6 Z"/>
+    </symbol>
+    <symbol id="sprig" viewBox="0 0 40 24">
+      <path class="stem" d="M2 20 C12 18 26 12 38 4" fill="none" stroke-width="2" stroke-linecap="round"/>
+      <path class="leaf" d="M12 17 C10 11 13 7 17 6 C18 11 16 15 12 17 Z"/>
+      <path class="leaf" d="M20 14 C24 10 29 10 31 13 C27 16 23 16 20 14 Z"/>
+      <path class="leaf" d="M27 10 C26 5 29 1 33 1 C33 5 31 9 27 10 Z"/>
+    </symbol>
+  </svg>
+
   <header class="hero">
-    <div class="wrap">
-      <p class="prompt"><span class="dollar">$</span> cat ~/challenges/README</p>
+    <div class="garden garden-left" aria-hidden="true">
+      <svg class="tulip t1"><use href="#tulip"/></svg>
+      <svg class="tulip t2"><use href="#tulip"/></svg>
+      <svg class="bloom b1"><use href="#flower"/></svg>
+    </div>
+    <div class="garden garden-right" aria-hidden="true">
+      <svg class="bloom b2"><use href="#flower"/></svg>
+      <svg class="tulip t3"><use href="#tulip"/></svg>
+      <svg class="bloom b3"><use href="#flower"/></svg>
+    </div>
+    <div class="petals-fall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="wrap hero-inner">
+      <p class="hello"><svg class="hello-flower"><use href="#flower"/></svg> welcome to my garden</p>
       <h1>Renuka's CTF challenges</h1>
       <p class="lede">
-        Challenges I wrote for ACM Cyber's general meetings and Cyber Academy, from 2024 to now.
-        Every one of them is playable here, in your browser.
+        Challenges I grew for ACM Cyber's general meetings and Cyber Academy, from 2024 to now.
+        Every one of them is playable right here in your browser.
       </p>
       <dl class="stats" id="stats"></dl>
     </div>
+    <svg class="hero-edge" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 20 Q 50 0 100 20 T 200 20 T 300 20 T 400 20 T 500 20 T 600 20 T 700 20 T 800 20 T 900 20 T 1000 20 T 1100 20 T 1200 20 V40 H0 Z"/>
+    </svg>
   </header>
 
   <main class="wrap">
     <div class="toolbar" role="search">
       <div class="chips" id="filters" aria-label="Filter by category"></div>
-      <input id="search" type="search" placeholder="Search challenges" aria-label="Search challenges">
+      <input id="search" type="search" placeholder="Search the garden…" aria-label="Search challenges">
     </div>
     <p class="note">
-      <strong>How these run:</strong> this site is static, so challenges that had a server now run that same server
-      code in your browser. Look for the <span class="badge badge-backend">in-browser backend</span> tag, then send your
-      requests from the challenge page's DevTools console (for example with <code>fetch</code>), not with curl.
+      <svg class="note-sprig"><use href="#sprig"/></svg>
+      <span><strong>How these run:</strong> this site is static, so challenges that had a server now run that same
+      server code in your browser. Look for the <span class="badge badge-backend">in-browser backend</span> tag, then
+      send your requests from the challenge page's DevTools console (for example with <code>fetch</code>), not with curl.</span>
     </p>
     <section class="grid" id="grid" aria-live="polite"></section>
-    <p class="empty" id="empty" hidden>No challenges match that.</p>
+    <p class="empty" id="empty" hidden>Nothing blooming here. Try another search!</p>
   </main>
 
-  <footer class="wrap footer">
-    <p>Challenge pages are the originals, changed only as much as static hosting needs.
-      <a href="https://github.com/renukabhu">github.com/renukabhu</a></p>
+  <footer class="footer">
+    <svg class="footer-sprig"><use href="#sprig"/></svg>
+    <p>Challenge pages are the originals, changed only as much as static hosting needs.<br>
+      Grown with love by <a href="https://github.com/renukabhu">@renukabhu</a></p>
   </footer>
 
   <template id="card">
     <article class="card">
+      <svg class="card-flower" aria-hidden="true"><use href="#flower"/></svg>
       <header class="card-head">
         <h2 class="card-title"></h2>
         <span class="points"></span>
