@@ -82,13 +82,7 @@ async function main() {
   const grid = document.getElementById("grid");
   challenges.forEach((c) => grid.appendChild(card(c)));
 
-  const terms = new Set(challenges.flatMap((c) => c.events.map((e) => e.term)));
   const categories = [...new Set(challenges.map((c) => c.category))].sort();
-  document.getElementById("stats").innerHTML = [
-    [challenges.length, "challenges"],
-    [categories.length, categories.length === 1 ? "category" : "categories"],
-    [terms.size, "quarters"],
-  ].map(([n, label]) => `<div><dt>${label}</dt><dd>${n}</dd></div>`).join("");
 
   let category = "all";
   const search = document.getElementById("search");
