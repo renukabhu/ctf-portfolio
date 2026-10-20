@@ -1,27 +1,5 @@
 [
   {
-    "slug": "poster-wall",
-    "name": "poster-wall",
-    "category": "web",
-    "points": 10,
-    "events": [
-      {
-        "group": "Cyber GM",
-        "term": "Fall 2026"
-      }
-    ],
-    "sort": 20262,
-    "description": "Only ME the admin gets to put up new posters.  \n\n{{ link }}",
-    "play": "challenges/poster-wall/",
-    "files": [],
-    "in_browser_backend": true,
-    "flag": "ExYREV8SBEAcB0dfNgZDHgZHCR0J",
-    "solve_files": {
-      "solve.py": "import sys\n\nimport requests\n\nURL = sys.argv[1] if len(sys.argv) > 1 else \"http://localhost:8080\"\n\nr = requests.post(f\"{URL}/newPoster\", json={\"user\": \"admin\", \"poster\": \"anything\"})\nprint(r.text)\n"
-    },
-    "solution": "The page source has a commented-out TODO for the admin-only \"add poster\" button, including the exact `fetch(\"/newPoster\", ...)` call it would make with `user: \"guest\"`. Make that POST yourself with `user: \"admin\"` and any `poster` value."
-  },
-  {
     "slug": "poster",
     "name": "poster",
     "category": "web",
