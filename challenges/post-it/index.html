@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magical Post-Its</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      position: relative;
+      height: 100vh;
+    }
+
+    .postit {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      position: absolute;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      resize: none;
+      font-size: 16px;
+      box-sizing: border-box;
+      animation: spin 6s linear infinite;
+    }
+
+    .yellow { background: #fff475; border-color: #e0c600; }
+    .blue   { background: #aecbfa; border-color: #5f99f7; }
+    .pink   { background: #fbbcde; border-color: #f06292; }
+    .green  { background: #ccff90; border-color: #78c257; }
+    .orange { background: #ffd7b8; border-color: #ff9800; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+<!-- portfolio: backend ported to run in the browser -->
+<script src="../../emu/client.js"></script>
+</head>
+<body>
+
+  <textarea class="postit yellow">Yellow Note</textarea>
+  <textarea class="postit blue">Blue Note</textarea>
+  <textarea class="postit pink">Pink Note</textarea>
+  <textarea class="postit green">Green Note</textarea>
+  <textarea class="postit orange">Orange Note</textarea>
+
+  <script>
+    const notes = document.querySelectorAll(".postit");
+
+    function moveNote(note) {
+      const maxX = window.innerWidth - 220; // account for note width
+      const maxY = window.innerHeight - 220;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      note.style.transition = "transform 4s ease-in-out, top 4s ease-in-out, left 4s ease-in-out";
+      note.style.left = `${newX}px`;
+      note.style.top = `${newY}px`;
+    }
+
+    function animateNotes() {
+      notes.forEach(note => moveNote(note));
+    }
+
+    // Initial placement
+    animateNotes();
+
+    // Repeat every 5 seconds
+    setInterval(animateNotes, 5000);
+  </script>
+</body>
+</html>

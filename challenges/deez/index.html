@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> CASHEWSSSS </title>
+        <style>
+            body {
+                background-image: url(https://www.uclahealth.org/sites/default/files/styles/landscape_16x9_030000_1200x675/public/images/f9/mixed-nuts-istock-152990123.jpg?f=4daef427&itok=kWHkGj3o);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                text-align: center;
+            }
+
+            h1, p {
+                background-color: pink;
+            }
+
+            .pictures > * {
+  transition: 500ms ease-out;
+  transform-origin: center;
+}
+.pictures > :hover {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  filter: opacity(0.5);
+  transform: rotate(360deg);
+
+}
+        </style>
+    <!-- portfolio: backend ported to run in the browser -->
+<script src="../../emu/client.js"></script>
+</head>
+    <body>
+        <h1>pls get my cashew for me</h1>
+        <p> yum yum yum yum</p>
+
+        <div class="pictures">      
+        
+          <img onclick="alert('almon')"src="https://www.treehousealmonds.com/wp-content/uploads/2023/01/whole.png" width=" 200">
+  
+        </div>
+
+        <script>
+               // Function to move images randomly
+        function moveImages() {
+            const images = document.querySelectorAll('.pictures img');
+            const windowWidth = window.innerWidth - 150; // Adjust for image width
+            const windowHeight = window.innerHeight - 150; // Adjust for image height
+            
+            images.forEach(img => {
+                // Generate random positions
+                const randomX = Math.floor(Math.random() * windowWidth);
+                const randomY = Math.floor(Math.random() * windowHeight);
+
+                // Set the new position
+                img.style.position = 'absolute'; // Ensure it's positioned absolutely
+                img.style.left = randomX + 'px';
+                img.style.top = randomY + 'px';
+            });
+        }
+
+        // Move images every 2 seconds
+        setInterval(moveImages, 4000);
+
+        // Initial move on load
+        moveImages();
+        </script>
+        
+
+        
+    </body>
+</html>

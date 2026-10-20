@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FORTNITEEE</title>
+        <style>
+            body {
+                background-image: url(https://cdn-0001.qstv.on.epicgames.com/ticBgnmAKzalxpAAxd/image/landscape_comp.jpeg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                text-align: center;
+            }
+
+            h1, p {
+                background-color: antiquewhite;
+            }
+
+            .pictures > * {
+  transition: 500ms ease-out;
+  transform-origin: center;
+}
+.pictures > :hover {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  filter: opacity(0.5);
+  transform: rotate(360deg);
+
+}
+        </style>
+    </head>
+    <body>
+        <h1>Fortnite battle royale</h1>
+        <p>now wheres this bot lobby...</p>
+
+        <div class="pictures">      
+          <img onclick="alert('omg you found a medkit!!')" src="https://pnghq.com/wp-content/uploads/pnghq.com-chest.png" width=" 200">
+          <img onclick="alert('nothing :C')" src="https://images.hobbydb.com/processed_uploads/subject_photo/subject_photo/image/50769/1556741791-22297-7916/Loot_Llama_large.png" width=" 200">
+          <img onclick="alert('wowww')" src="https://pbs.twimg.com/media/Fc7F9FUWIAAxFTG.png" width=" 200">
+          <img onclick="alert('omg you found a port-a-bunker')"src="https://i.pinimg.com/originals/2d/88/8c/2d888c5c5b9ef2c024876f673e9b7041.png" width=" 200">
+          <img onclick="alert('hmmmm try looking for a file that robots cannot access')"src="https://wiki.hypixel.net/images/c/c4/Minecraft_items_ender_chest.png" width=" 200">
+  
+        </div>
+
+        <script>
+               // Function to move images randomly
+        function moveImages() {
+            const images = document.querySelectorAll('.pictures img');
+            const windowWidth = window.innerWidth - 150; // Adjust for image width
+            const windowHeight = window.innerHeight - 150; // Adjust for image height
+            
+            images.forEach(img => {
+                // Generate random positions
+                const randomX = Math.floor(Math.random() * windowWidth);
+                const randomY = Math.floor(Math.random() * windowHeight);
+
+                // Set the new position
+                img.style.position = 'absolute'; // Ensure it's positioned absolutely
+                img.style.left = randomX + 'px';
+                img.style.top = randomY + 'px';
+            });
+        }
+
+        // Move images every 2 seconds
+        setInterval(moveImages, 4000);
+
+        // Initial move on load
+        moveImages();
+        </script>
+        
+
+        
+    </body>
+</html>

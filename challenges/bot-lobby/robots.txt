@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin
+
+# flag: cyber{numb3r_0n3_v1ct0ry_r0y4l3}

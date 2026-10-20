@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renuka's CTF Challenges</title>
+  <meta name="description" content="Capture-the-flag challenges I wrote for ACM Cyber at UCLA, playable right in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M8 4v26' stroke='%2310b981' stroke-width='3'/%3E%3Cpath d='M9 5h16l-4 6 4 6H9z' fill='%2310b981'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="prompt"><span class="dollar">$</span> cat ~/challenges/README</p>
+      <h1>Renuka's CTF challenges</h1>
+      <p class="lede">
+        Challenges I wrote for ACM Cyber's general meetings and Cyber Academy, from 2024 to now.
+        Every one of them is playable here, in your browser.
+      </p>
+      <dl class="stats" id="stats"></dl>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar" role="search">
+      <div class="chips" id="filters" aria-label="Filter by category"></div>
+      <input id="search" type="search" placeholder="Search challenges" aria-label="Search challenges">
+    </div>
+    <p class="note">
+      <strong>How these run:</strong> this site is static, so challenges that had a server now run that same server
+      code in your browser. Look for the <span class="badge badge-backend">in-browser backend</span> tag, then send your
+      requests from the challenge page's DevTools console (for example with <code>fetch</code>), not with curl.
+    </p>
+    <section class="grid" id="grid" aria-live="polite"></section>
+    <p class="empty" id="empty" hidden>No challenges match that.</p>
+  </main>
+
+  <footer class="wrap footer">
+    <p>Challenge pages are the originals, changed only as much as static hosting needs.
+      <a href="https://github.com/renukabhu">github.com/renukabhu</a></p>
+  </footer>
+
+  <template id="card">
+    <article class="card">
+      <header class="card-head">
+        <h2 class="card-title"></h2>
+        <span class="points"></span>
+      </header>
+      <div class="tags"></div>
+      <div class="desc"></div>
+      <div class="actions"></div>
+      <form class="checker" autocomplete="off">
+        <input name="flag" placeholder="cyber{...}" aria-label="Flag" spellcheck="false">
+        <button type="submit">Check</button>
+        <output class="result" aria-live="polite"></output>
+      </form>
+      <details class="reveal">
+        <summary>Reveal flag &amp; solution</summary>
+        <div class="reveal-body">
+          <p class="flag-line"><span>Flag</span> <code class="flag"></code></p>
+          <div class="solution"></div>
+          <div class="solve-files"></div>
+        </div>
+      </details>
+    </article>
+  </template>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>

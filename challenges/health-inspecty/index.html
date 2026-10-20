@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Feast Dining</title>
+
+    <!-- rat 1: cyber{r4ts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <style>
+      html, body { height:100%; margin:0; padding:0; overflow:hidden; }
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url(https://pacificties.org/wp-content/uploads/2023/05/Screen-Shot-2023-05-26-at-10.00.58-AM.png);
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+
+      .header {
+        position: relative;
+        z-index: 20;
+        margin: 10px;
+      }
+      h1, p {
+        background-color: antiquewhite;
+        font-family: 'Chewy', cursive;
+        padding: 8px 12px;
+        border-radius: 8px;
+        display: inline-block;
+      }
+
+      .pictures img {
+        position: absolute;
+        width: 140px;
+        height: auto;
+        transition: left 3s ease-in-out, top 3s ease-in-out, transform 2.5s ease-in-out;
+        user-select: none;
+        pointer-events: auto;
+      }
+
+      .header { pointer-events: auto; }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Feast Dining</h1>
+      <p>Rats everywhere omg</p>
+    </div>
+
+    <div class="pictures" aria-hidden="true">
+      <img onclick="alert('squeak')" src="https://img.favpng.com/0/16/3/mole-funny-cartoon-rat-with-black-fur-LqD8DdM8_t.jpg" alt="rat1">
+      <img data-name="rat #2" onclick="alert('squeak')" src="https://e7.pngegg.com/pngimages/1018/56/png-clipart-ratatouille-colette-tatou-alfredo-linguini-auguste-gusteau-ratatui-mammal-recipe-thumbnail.png" alt="rat2">
+      <img onclick="alert('squeaaaak')" src="https://w7.pngwing.com/pngs/438/103/png-transparent-django-ratatouille-anton-ego-animation-ratatuille-mammal-mouse-film-still-thumbnail.png" alt="rat3">
+      <img onclick="alert('squeak')" src="https://png.pngtree.com/png-vector/20231011/ourmid/pngtree-ratatouille-png-with-ai-generated-png-image_10156209.png" alt="rat4">
+      <img src="https://imgur.com/a/ratty-wfyVvDV" width=" 200" style = "display: none; filter: opacity(0)">
+      <img onclick="alert('squeak')" src="https://static.vecteezy.com/system/resources/previews/060/281/287/non_2x/round-fluffy-cartoon-rat-character-standing-happily-with-a-cheerful-expression-isolated-on-transparent-background-png.png" alt="rat5">
+    </div>
+
+    <script>
+      const rats = Array.from(document.querySelectorAll('.pictures img'));
+
+      function placeRandom(el) {
+        const w = el.width || el.naturalWidth || 140;
+        const h = el.height || el.naturalHeight || 140;
+        const maxX = Math.max(0, window.innerWidth - w);
+        const maxY = Math.max(0, window.innerHeight - h);
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+      }
+
+      function startRoaming() {
+        rats.forEach(r => placeRandom(r));
+        rats.forEach((rat, idx) => {
+          const base = 2500 + Math.floor(Math.random() * 2500);
+          setInterval(() => {
+            placeRandom(rat);
+            rat.style.transform = `rotate(${Math.random() * 360}deg)`;
+          }, base + idx * 200);
+        });
+      }
+
+      let loadedCount = 0;
+      rats.forEach(img => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.addEventListener('load', () => {
+            loadedCount++;
+            if (loadedCount === rats.length) startRoaming();
+          });
+        }
+      });
+      if (loadedCount === rats.length) startRoaming();
+      // rat 2:  _1n_r13b3r
+
+      window.addEventListener('resize', () => {
+        rats.forEach(placeRandom);
+      });
+    </script>
+  </body>
+</html>

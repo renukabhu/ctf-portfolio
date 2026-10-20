@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plankton's Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(https://i.pinimg.com/474x/35/79/7c/35797c0ef84abf5b14dcb6941a78532c.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2a7f6f;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 20px 15%;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2a7f6f;
+            border-bottom: 2px solid #2a7f6f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            font-size: 1.6em;
+            margin: 0;
+            color: #2a7f6f;
+        }
+
+        .project p {
+            color: #555;
+            font-size: 1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Plankton's Portfolio</h1>
+        <p>Small in size, but big on ambition!</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p>Hello! I'm Plankton, the mastermind behind some of the most ambitious (and often failed) schemes in Bikini Bottom. Despite my small size, I have a big vision for the future—one where I rule the culinary world and take over the Krusty Krab. I am a genius inventor, an expert strategist, and the proud owner of the Chum Bucket.</p>
+            <p>My ultimate goal? To uncover the secret recipe of the legendary Krabby Patty and ensure my place as the top restaurateur in Bikini Bottom!</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <ul>
+                <li>Inventing Cutting-Edge Technology (e.g., robotic minions, surveillance devices)</li>
+                <li>Mastermind Planning & Strategic Execution</li>
+                <li>Advanced Hacking & Cyber Espionage</li>
+                <li>Running a Business (The Chum Bucket)</li>
+                <li>Villainous Monologuing (it’s an art!)</li>
+            </ul>
+        </section>
+            
+        <!-- cyber{TH3_F0RMU14_W1LL_B3_M1N3_J4N_27} -->
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Notable Projects</h2>
+
+            <div class="projects">
+                <!-- Project 1 -->
+                <div class="project">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/380dbd01-38ee-4146-93df-31ce051f4b83/dfodfos-503fd0f7-8823-4c7d-ab84-753ed00e5e93.png/v1/fill/w_1920,h_2136,q_80,strp/_sbsp__the_chum_bucket_by_spongedrew250_dfodfos-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM4MGRiZDAxLTM4ZWUtNDE0Ni05M2RmLTMxY2UwNTFmNGI4M1wvZGZvZGZvcy01MDNmZDBmNy04ODIzLTRjN2QtYWI4NC03NTNlZDAwZTVlOTMucG5nIiwiaGVpZ2h0IjoiPD0yMTM2Iiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uud2F0ZXJtYXJrIl0sIndtayI6eyJwYXRoIjoiXC93bVwvMzgwZGJkMDEtMzhlZS00MTQ2LTkzZGYtMzFjZTA1MWY0YjgzXC9zcG9uZ2VkcmV3MjUwLTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.qGf1PFS1m4MBgmH9wnHwcHWB0mKU9dKMLCZxEzkRw5c" alt="Chum Bucket">
+                    <h3>Chum Bucket Takeover</h3>
+                    <p>A daring but failed attempt to defeat the Krusty Krab and its legendary burger. Despite my innovative technology, my plans have not yet succeeded... but I never give up!</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project">
+                    <img src="https://media.printables.com/media/prints/1066966/images/8072168_bbc47cbf-9b6b-43d7-afa5-070b2d9e9fb3_ca03298e-2270-4f35-a8b7-41d80c6f10fc/thumbs/cover/800x800/webp/plankton27s_tank_robot.webp" alt="Robot Minions">
+                    <h3>Robot Minions</h3>
+                    <p>My robotic minions were designed to help me take control of Bikini Bottom! Though they malfunctioned (often hilariously), they represented a bold step forward in my quest for domination.</p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project">
+                    <img src="https://betches.s3.amazonaws.com/app/uploads/2024/08/30105821/krabbypatty_secretrecipe.jpg" alt="Krabby Patty Formula">
+                    <h3>Krabby Patty Formula Heist</h3>
+                    <p>The quest to uncover the Krabby Patty secret recipe is ongoing. With cutting-edge technology and cunning plans, I will eventually succeed. After all, it’s only a matter of time!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Contact Plankton at <a href="mailto:plankton@chumbucket.com" style="color: white; text-decoration: underline;">plankton@chumbucket.com</a></p>
+    </footer>
+
+
+
+</body>
+
+</html>
