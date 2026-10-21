@@ -61,3 +61,10 @@ Service workers need http(s), so serve the folder rather than opening the file:
 ```sh
 python3 -m http.server 8000   # then open http://localhost:8000/
 ```
+
+## Replaced images
+
+Some challenge pages hot-linked images that have since disappeared. Replacements live in
+`challenges/<slug>/img/` (bot-lobby and gameing-session: the loot chest and ender chest).
+Re-running `add_challenge.py` on those challenges restores the original `index.html`, so
+re-apply the `img/...` src swaps afterwards.
